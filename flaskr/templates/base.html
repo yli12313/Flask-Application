@@ -1,24 +1,38 @@
 <!doctype html>
+<!-- The title of the page. The title can be dynamically set within the 'title' block -->
 <title>{% block title %}{% endblock %} - Flaskr</title>
+<!-- Link to the stylesheet 'style.css' located in the static folder -->
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!-- Navigation bar -->
 <nav>
+  <!-- The title of the blog -->
   <h1>Flaskr</h1>
   <ul>
+    <!-- If the user is logged in, display the username and a logout link -->
+    <!-- g: special object that stores data during a single request -->
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    <!-- If the user is not logged in, dispplay links to register and login pages -->
     {% else %}
+      <!-- 'auth.register' is the endpoint for the register view of the auth blueprint. Flask
+      uses this to generate the URL for that view -->
       <li><a href="{{ url_for('auth.register') }}">Register</a>
       <li><a href="{{ url_for('auth.login') }}">Log In</a>
     {% endif %}
   </ul>
 </nav>
+
+<!-- Main content section -->
 <section class="content">
+  <!-- Header of the content section. The header can be dynamically set within the 'header' block -->
   <header>
+    <!-- Loop through and display all flash messages -->
     {% block header %}{% endblock %}
   </header>
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
+  <!-- Main content of the page. The content can be dynamically set within the 'content' block -->
   {% block content %}{% endblock %}
 </section>

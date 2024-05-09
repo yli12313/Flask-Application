@@ -1,15 +1,23 @@
+<!-- Extend the base template 'base.html' -->
 {% extends 'base.html' %}
 
+<!-- Define the content for the 'header' block in the base template -->
 {% block header %}
+  <!-- Define the content for the 'title' block in the base template -->
   <h1>{% block title %}New Post{% endblock %}</h1>
 {% endblock %}
 
+<!-- Define the content for the 'content' block in the base template -->
 {% block content %}
+  <!-- Create a form that sends a POST request when submitted -->
   <form method="post">
+    <!-- Label and input field for the post title -->
     <label for="title">Title</label>
     <input name="title" id="title" value="{{ request.form['title'] }}" required>
+    <!-- Label and textarea for the post body -->
     <label for="body">Body</label>
     <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    <!-- Submit button for the form -->
     <input type="submit" value="Save">
   </form>
 {% endblock %}
