@@ -1,20 +1,30 @@
+<!-- Extend the base template -->
 {% extends 'base.html' %}
 
+<!-- Define the header block -->
 {% block header %}
+  <!-- Define the title block within the header block -->
   <h1>{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
 {% endblock %}
 
+<!-- Define the content block -->
 {% block content %}
+  <!-- Create a form for editing the post -->
   <form method="post">
     <label for="title">Title</label>
+    <!-- Input field for the title of the post -->
     <input name="title" id="title"
       value="{{ request.form['title'] or post['title'] }}" required>
     <label for="body">Body</label>
+    <!-- Textarea for the body of the post -->
     <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+    <!-- Submit button for the form -->
     <input type="submit" value="Save">
   </form>
   <hr>
+  <!-- Create a form for deleting the post -->
   <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+    <!-- Submit button for deleting the post -->
     <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
   </form>
 {% endblock %}
