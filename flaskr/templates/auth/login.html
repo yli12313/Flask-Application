@@ -1,15 +1,23 @@
+<!-- This is a Jinja template for a Log In page. -->
 {% extends 'base.html' %}
 
+<!-- The 'header' block is being overridden here. -->
 {% block header %}
+  <!-- The title of the page is 'Log In'. -->
   <h1>{% block title %}Log In{% endblock %}</h1>
 {% endblock %}
 
+<!-- The 'content' block is being overridden here. -->
 {% block content %}
+  <!-- A form for logging in. The form uses the POST method to submit the data.  -->
   <form method="post">
+    <!-- An input field for the username. This field is required. -->
     <label for="username">Username</label>
     <input name="username" id="username" required>
+    <!-- An input field for the password. This field is required. -->
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required>
+    <!-- A submit button with the value "Log In". -->
     <input type="submit" value="Log In">
   </form>
 {% endblock %}

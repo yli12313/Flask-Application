@@ -1,15 +1,23 @@
+<!-- This line is extending the base template 'base.html' -->
 {% extends 'base.html' %}
 
 {% block header %}
+  <!-- The title is set to 'Register' -->
   <h1>{% block title %}Register{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
+  <!-- This is the start of a form. The form uses the POST method. -->
   <form method="post">
+    <!-- Label for the 'username' input field. -->
     <label for="username">Username</label>
+    <!-- This is the required 'username' input field. -->
     <input name="username" id="username" required>
+    <!-- Label for the 'password' input field. -->
     <label for="password">Password</label>
+    <!-- This is the required 'password' input field. The input type is 'password'. -->
     <input type="password" name="password" id="password" required>
+    <!-- Submit button for the form. Text is set to 'Register'. -->
     <input type="submit" value="Register">
   </form>
 {% endblock %}
